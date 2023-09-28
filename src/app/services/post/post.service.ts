@@ -40,4 +40,8 @@ export class PostService {
     const response: any = await this.apiService.delete(path);
     return new PostModel(response);
   }
+
+  async getUserOfPost(id: number) {
+    
+  }
 }

@@ -22,14 +22,20 @@ export class PostsComponent implements OnInit {
   ) { }
    
   ngOnInit() {
-    this.fetchPosts();
+    this.loading = true;
+    this.fetchPosts().then(() => this.loading = false);
   }
 
   async fetchPosts() {
-    if (this.loading) {
-
-    }
     this.posts =  await this.postService.getPosts();
+  }
+
+  openDeleteDialog(postId: number) {
+    console.log('delete');
+  }
+
+  openEditDialog(postId: number) {
+    console.log('edit');
   }
 
 }
