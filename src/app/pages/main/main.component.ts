@@ -3,11 +3,11 @@ import { PostModel } from 'src/app/models/post.model';
 import { PostService } from 'src/app/services/post/post.service';
 
 @Component({
-  selector: 'app-posts',
-  templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.scss']
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.scss']
 })
-export class PostsComponent implements OnInit {
+export class MainComponent implements OnInit {
   
   loading = false;
   

@@ -1,4 +1,25 @@
+
+$background: #313040;
+$primary: #3aa484;
+$secondary: #816fe8;
+
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: $primary;
+    outline-color: $primary;
+}
+
+.btn-secondary, .btn-secondary:hover, .btn-secondary:active, .btn-secondary:visited {
+    background-color: $secondary;
+    outline-color: $secondary;
+}
+
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+    margin: 0px; font-family: Roboto,
+    "Helvetica Neue", sans-serif;
+    background-color: $background;
+}
+

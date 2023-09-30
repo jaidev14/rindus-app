@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [{
-  path: 'posts',
-  loadChildren: () => import('./pages/posts/posts.module')
-    .then(m => m.PostsModule)
+  path: 'main',
+  loadChildren: () => import('./pages/main/main.module')
+    .then(m => m.MainModule)
 }, {
   path: '',
-  redirectTo: 'posts',
+  redirectTo: 'main',
   pathMatch: 'full'
 }, {
   path: '**',
-  redirectTo: 'posts',
+  redirectTo: 'main',
   pathMatch: 'full'
 }];
 
