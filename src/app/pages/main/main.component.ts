@@ -39,13 +39,12 @@ export class MainComponent implements OnInit {
   loadPosts() {
     this.loading = true;
     this.search = '';
-    this.userService.setupUsers().then(() =>
-      this.fetchPosts().then(() => {
-        this.posts.forEach(post => {
-          post.userName = this.userService.getUsernameById(post.userId);
-        });
-        this.loading = false
-      }));
+    this.fetchPosts().then(() => {
+      this.posts.forEach(post => {
+        post.userName = this.userService.getUsernameById(post.userId);
+      });
+      this.loading = false
+    });
   }
 
   async fetchPosts() {
@@ -91,7 +90,7 @@ export class MainComponent implements OnInit {
       if (result) {
         this.postService.deletePost(post.id).then(() => {
           this.loadPosts();
-        }); 
+        });
       }
     }).catch((res) => {
       console.log('modal dismissed');

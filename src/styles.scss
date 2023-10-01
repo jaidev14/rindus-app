@@ -2,14 +2,21 @@
 $background: #292b37;
 $background-container: #313040;
 $primary: #3aa484;
+$primary-active: #30836a;
 $secondary: #816fe8;
 $white: #ffffff;
 
 
-.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+.btn-primary, .btn-primary:active {
     background-color: $primary;
-    outline-color: $primary;
+    border-color: $primary;
 }
+
+.btn-primary:active {
+    background-color: $primary-active;
+    border-color: $primary-active;
+}
+
 
 .btn-secondary, .btn-secondary:hover, .btn-secondary:active, .btn-secondary:visited {
     background-color: $secondary;

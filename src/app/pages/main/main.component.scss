@@ -9,8 +9,16 @@
     color: #ced4da;
 }
 
+.current-user-box {
+    color: $white;
+}
 
-.post-card {
+.user-list-title {
+    color: $white;
+}
+
+
+.clickable {
     cursor: pointer;
 }
 
@@ -62,9 +70,9 @@
 }
 
 .post-list {
-    background-color: #ced4da;
     background-color: $background-container;
     color: $white;
+    margin: 0;
 }
 
 .scrollable {
@@ -79,6 +87,19 @@
 .card {
     background-color: #4e4d5f;
     color: white;
+}
+
+.user-list {
+    background-color: $background-container;
+    padding: 8px;
+}
+
+.user-list-name {
+    margin: 4px;
+}
+
+.user-card {
+    color: $white;
 }
 
 ::-webkit-scrollbar {

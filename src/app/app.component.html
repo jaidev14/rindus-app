@@ -1,1 +1,4 @@
-<router-outlet></router-outlet>
+<div class="position-absolute w-100 h-100 d-flex flex-column align-items-center justify-content-center" *ngIf="loading">
+    <div class="spinner-border" role="status"></div>
+</div>
+<router-outlet *ngIf="!loading"></router-outlet>

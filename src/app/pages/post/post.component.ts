@@ -6,6 +6,7 @@ import { CommentService } from 'src/app/services/comment/comment.service';
 import { PostService } from 'src/app/services/post/post.service';
 import { UserService } from 'src/app/services/user/user.service';
 
+
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -14,10 +15,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class PostComponent implements OnInit {
   loading = false;
 
-  search = '';
-  sortKey = '';
-  sortDirection = '';
-
+  newComment = ''
   post: PostModel;
   comments: CommentModel[] = [];
 
@@ -30,20 +28,24 @@ export class PostComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+   this.loadPostAndComments();
+  }
+
+  loadPostAndComments() {
     this.loading = true;
     const postId = Number(this.route.snapshot.paramMap.get('id'));
     this.fetchPost(postId).then(
       () => this.fetchComments(postId).then(
         () => this.loading = false)
-      )
+    )
   }
 
   async fetchComments(postId: number) {
     this.comments = await this.commentService.getComments(postId);
   }
 
-    // We could avoid fetching the post, as we already have the data in main and we can inject it.
-    // But in a real world, we wouldn't have all the post data already in the list (as it would be less efficient), so we make a call to retrieve the specific post.
+  // We could avoid fetching the post, as we already have the data in main and we can inject it.
+  // But in a real world, we wouldn't have all the post data already in the list (as it would be less efficient), so we make a call to retrieve the specific post.
   async fetchPost(postId: number) {
     this.post = await this.postService.getPost(postId);
     this.post.userName = this.userService.getUsernameById(this.post.userId);
@@ -51,5 +53,20 @@ export class PostComponent implements OnInit {
 
   backToMain() {
     this.router.navigate(['main']);
+  }
+
+  publishComment() {
+    if (this.newComment !== '') {
+      const data = new CommentModel({
+        postId: this.post.id,
+        name: this.userService.currentUser.name,
+        email: this.userService.currentUser.email,
+        body: this.newComment
+      });
+      this.commentService.createComment(data).then(() => {
+        this.newComment = '';
+        this.loadPostAndComments();
+      });
+    }
   }
 }

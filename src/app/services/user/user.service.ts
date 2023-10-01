@@ -20,15 +20,15 @@ export class UserService {
   }
 
   async setupUsers(params: any = {}): Promise<any> {
-    const path = '/users/';
-    const response: any = await this.apiService.get(path, {params});
-    this.users = response.map((post: UserModel) => new UserModel(post));
-    this.currentUser = this.users[0];
+      const path = '/users/';
+      const response: any = await this.apiService.get(path, {params});
+      this.users = response.map((post: UserModel) => new UserModel(post));
+      this.currentUser = this.users[localStorage.getItem('userId') ?  Number(localStorage.getItem('userId')) : 0];
   }
 
   selectUser(userId: number) {
     const matchedUser = this.users.filter((user) => user.id == userId);
     this.currentUser = matchedUser[0];
+    localStorage.setItem('userId', this.currentUser.id.toString());
   }
-  
 }

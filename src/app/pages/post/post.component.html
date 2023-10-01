@@ -18,9 +18,10 @@
             </div>
 
             <div class="comment-section">
-                <p class="">{{comments.length}} comments</p>
-                <div class="form-group mb-3">
-                    <textarea class="form-control" placeholder="Add comment" id="exampleFormControlTextarea1" rows="2"></textarea>
+                <p class="total-comments-message">{{comments.length}} comments</p>
+                <div class="form-group mb-3 comment-form">
+                    <textarea class="form-control" placeholder="Add comment" id="exampleFormControlTextarea1" rows="2" [(ngModel)]="this.newComment"></textarea>
+                    <button type="button" class="btn btn-primary publish-btn" (click)="publishComment()">Publish</button>
                 </div>
                 <div class="card pb-3" *ngFor="let comment of comments; let i = index">
                     <div class="card-body">

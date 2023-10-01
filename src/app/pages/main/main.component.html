@@ -16,11 +16,14 @@
                 </div>
 
             </div>
+            <div class="current-user-box">
+                <p>Welcome {{this.userService.currentUser.name}}!</p>
+            </div>
 
             <button type="button" class="btn btn-primary" (click)="openInputModal()">Create post</button>
         </div>
 
-        <div class="col-6 pt-3 m-3 post-list">
+        <div class="col-6 pt-3 post-list">
             <div class="scrollable">
                 <div class="card mb-3" *ngFor="let post of filteredPosts; let i = index">
                     <h5 class="card-header">{{post.userName}}</h5>
@@ -37,7 +40,7 @@
                         </svg>
                     </div>
 
-                    <div class="post-card" (click)="openPostPage(post)">
+                    <div class="clickable" (click)="openPostPage(post)">
                         <div class="card-body">
                             <h5 class="card-title">{{post.title}}</h5>
                             <p class="card-text">{{post.body}}</p>
@@ -48,8 +51,14 @@
             </div>
         </div>
 
-        <div class="col m-3">
-            One of three columns
+        <div class="col m-3 user-list">
+            <h3 class="user-list-title">Select a user</h3>
+            <div class="user-card" *ngFor="let user of this.userService.users; let i = index">
+                <h3 class="border-bottom"></h3>
+                <div class="clickable" (click)="this.userService.selectUser(user.id)">
+                        <p class="user-list-name">{{user.name}}</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
