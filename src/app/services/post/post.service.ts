@@ -29,8 +29,8 @@ export class PostService {
     return true;
   }
 
-  async updatePost(id: number): Promise<PostModel> {
-    const path = `/posts/${id}/`;
+  async updatePost(data: PostModel): Promise<PostModel> {
+    const path = `/posts/${data.id}/`;
     const response: any = await this.apiService.put(path);
     return new PostModel(response);
   }

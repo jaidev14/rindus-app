@@ -1,3 +1,3 @@
 export class AppConfig {
-    apiEndpoint = 'https://jsonplaceholder.typicode.com/';
+    apiEndpoint = ' http://localhost:3000/';
 }

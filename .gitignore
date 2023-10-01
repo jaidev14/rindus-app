@@ -10,7 +10,7 @@
 .angular/cache/
 
 # Dependencies
-/node_modules
+node_modules
 
 # Cordova
 /www

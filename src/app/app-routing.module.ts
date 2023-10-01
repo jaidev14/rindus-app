@@ -6,6 +6,10 @@ const routes: Routes = [{
   loadChildren: () => import('./pages/main/main.module')
     .then(m => m.MainModule)
 }, {
+  path: 'post/:id',
+  loadChildren: () => import('./pages/post/post.module')
+    .then(m => m.PostModule)
+}, {
   path: '',
   redirectTo: 'main',
   pathMatch: 'full'

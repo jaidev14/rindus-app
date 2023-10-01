@@ -1,10 +1,91 @@
+@import 'src/styles';
 .input-box {
-    position: absolute;
+    margin: 20px;
 }
 
 .input-box svg {
-    position: absolute;
     right: 13px;
     top: 13px;
     color: #ced4da;
+}
+
+
+.post-card {
+    cursor: pointer;
+}
+
+.search {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.search-input {
+    background: #282c37;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #9baec8 !important;
+    display: block;
+    font-family: inherit;
+    font-size: 14px;
+    font-size: 16px;
+    line-height: 18px;
+    margin: 0;
+    outline: 0;
+    padding: 15px;
+    padding-inline-end: 30px;
+    width: 100%;
+}
+
+.search-icon {
+    color: #9baec8;
+    inset-inline-end: 10px;
+    position: absolute;
+    top: 16px;
+}
+
+.edit-icon {
+    color: #9baec8;
+    inset-inline-end: 40px;
+    position: absolute;
+    top: 10px;
+    cursor: pointer;
+}
+
+.delete-icon {
+    color: #9baec8;
+    inset-inline-end: 10px;
+    position: absolute;
+    top: 10px;
+    cursor: pointer;
+}
+
+.post-list {
+    background-color: #ced4da;
+    background-color: $background-container;
+    color: $white;
+}
+
+.scrollable {
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.row-height {
+    height: 100vh;
+}
+
+.card {
+    background-color: #4e4d5f;
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+* {
+  -ms-overflow-style: none !important;
 }

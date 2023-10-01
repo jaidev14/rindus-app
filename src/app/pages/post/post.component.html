@@ -1,0 +1,36 @@
+<div class="position-absolute w-100 h-100 d-flex flex-column align-items-center justify-content-center" *ngIf="loading">
+    <div class="spinner-border" role="status"></div>
+</div>
+<div class="container align-items-center pt-3" *ngIf="!loading">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="header column-back-button" (click)="backToMain()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left column-back-icon" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                </svg>
+                Back
+            </div>
+            <div class="blog-post">
+                <h2 class="blog-post-title">{{post.title}}</h2>
+                <p class="blog-post-meta">by {{post.userName}}</p>
+                <h3 class="pb-3 mb-4 border-bottom"></h3>
+                <p>{{post.body}}</p>
+            </div>
+
+            <div class="comment-section">
+                <p class="">{{comments.length}} comments</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" placeholder="Add comment" id="exampleFormControlTextarea1" rows="2"></textarea>
+                </div>
+                <div class="card pb-3" *ngFor="let comment of comments; let i = index">
+                    <div class="card-body">
+                        <h5 class="card-title">{{comment.name}}</h5>
+                        <h6 class="blog-post-meta">{{comment.email}}</h6>
+                        <p class="card-text">{{comment.body}}</p>
+                    </div>
+                    <h3 *ngIf="i < comments.length - 1" class="pb-3 border-bottom"></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

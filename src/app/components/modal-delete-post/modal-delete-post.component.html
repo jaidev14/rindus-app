@@ -1,0 +1,11 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5">Remove the post {{this.post.title}}?</h1>
+        </div>
+        <div class="modal-body">
+            <button type="button" class="btn" data-bs-dismiss="modal" (click)="submit(false)">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="submit(true)">Yes</button>
+        </div>
+    </div>
+</div>

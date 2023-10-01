@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { PostService } from './services/post/post.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +6,9 @@ import { PostService } from './services/post/post.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Rindus App';
+  constructor() {}
+
+  ngOnInit() {
+    
+  }
 }
