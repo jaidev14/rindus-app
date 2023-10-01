@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDeleteDialogComponent } from 'src/app/components/modal-delete-dialog/modal-delete-dialog.component';
+import { ModalEditCommentComponent } from 'src/app/components/modal-edit-comment/modal-edit-comment.component';
 import { CommentModel } from 'src/app/models/comment.model';
 import { PostModel } from 'src/app/models/post.model';
 import { CommentService } from 'src/app/services/comment/comment.service';
@@ -19,12 +22,16 @@ export class PostComponent implements OnInit {
   post: PostModel;
   comments: CommentModel[] = [];
 
+  modalRef: NgbModalRef;
+
+
   constructor(
     private commentService: CommentService,
     private postService: PostService,
-    private userService: UserService,
+    public userService: UserService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -69,4 +76,38 @@ export class PostComponent implements OnInit {
       });
     }
   }
+
+  deleteComment(comment: CommentModel) {
+    this.modalRef = this.modalService.open(ModalDeleteDialogComponent, { centered: true });
+    this.modalRef.componentInstance.isPost = false;
+    this.modalRef.result.then((result) => {
+      if (result) {
+        this.commentService.deleteComment(comment.id).then(() => {
+          this.loadPostAndComments();
+        });
+      }
+    }).catch((res) => {
+      console.log('modal dismissed');
+    });
+  }
+
+  editComment(comment: CommentModel) {
+    this.modalRef = this.modalService.open(ModalEditCommentComponent, { size: 'lg', centered: true });
+    this.modalRef.componentInstance.comment = comment;
+    this.modalRef.result.then((result) => {
+      if (result) {
+          const data = new CommentModel({
+            id: comment.id,
+            postId: this.post.id,
+            name: this.userService.currentUser.name,
+            email: this.userService.currentUser.email,
+            body: result.body,
+          });
+          this.commentService.updateComment(data);
+      }
+    }).catch((res) => {
+      console.log('modal dismissed');
+    });
+  }
+
 }

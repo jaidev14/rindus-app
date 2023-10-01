@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { ModalDeletePostComponent } from 'src/app/components/modal-delete-post/modal-delete-post.component';
+import { ModalDeleteDialogComponent } from 'src/app/components/modal-delete-dialog/modal-delete-dialog.component';
 import { ModalInputPostComponent } from 'src/app/components/modal-input-post/modal-input-post.component';
 import { PostModel } from 'src/app/models/post.model';
 import { PostService } from 'src/app/services/post/post.service';
@@ -84,8 +84,8 @@ export class MainComponent implements OnInit {
   }
 
   openDeleteDialog(post: PostModel) {
-    this.modalRef = this.modalService.open(ModalDeletePostComponent, { centered: true });
-    this.modalRef.componentInstance.post = post;
+    this.modalRef = this.modalService.open(ModalDeleteDialogComponent, { centered: true });
+    this.modalRef.componentInstance.isPost = true;
     this.modalRef.result.then((result) => {
       if (result) {
         this.postService.deletePost(post.id).then(() => {

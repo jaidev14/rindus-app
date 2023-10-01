@@ -65,3 +65,22 @@
     padding: 0 40px;
 
 }
+
+.comment-actions {
+    display: inline;
+    width: 100%;
+}
+
+.edit-action {
+    color: #999;
+    position: absolute;
+    right: 80px;
+    cursor: pointer;
+}
+
+.delete-action {
+    color: rgb(221, 77, 77);
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}

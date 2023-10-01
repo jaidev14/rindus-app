@@ -28,6 +28,10 @@
                         <h5 class="card-title">{{comment.name}}</h5>
                         <h6 class="blog-post-meta">{{comment.email}}</h6>
                         <p class="card-text">{{comment.body}}</p>
+                        <div *ngIf="this.userService.currentUser.name === comment.name" class="comment-actions justify-content-md-end">
+                            <div class="edit-action" (click)="editComment(comment)">Edit</div>
+                            <div class="delete-action" (click)="deleteComment(comment)">Delete</div>
+                        </div>
                     </div>
                     <h3 *ngIf="i < comments.length - 1" class="pb-3 border-bottom"></h3>
                 </div>

@@ -29,8 +29,8 @@ export class CommentService {
     return true;
   }
 
-  async updateComment(id: number): Promise<CommentModel> {
-    const path = `/comments/${id}/`;
+  async updateComment(data: CommentModel): Promise<CommentModel> {
+    const path = `/comments/${data.id}/`;
     const response: any = await this.apiService.put(path);
     return new CommentModel(response);
   }

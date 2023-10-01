@@ -1,7 +1,8 @@
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-            <h1 class="modal-title fs-5">Remove the post {{this.post.title}}?</h1>
+            <h1 *ngIf="isPost" class="modal-title fs-5">Remove this post?</h1>
+            <h1 *ngIf="!isPost" class="modal-title fs-5">Remove this comment?</h1>
         </div>
         <div class="modal-body">
             <button type="button" class="btn" data-bs-dismiss="modal" (click)="submit(false)">Cancel</button>
