@@ -14,9 +14,9 @@ export class UserService {
     private apiService: ApiService
   ) { }
 
-  getUsernameById(idVal: number) {
+  getUserById(idVal: number) {
     const matchedUser = this.users.filter((user) => user.id == idVal);
-    return matchedUser[0].name;
+    return matchedUser[0];
   }
 
   async setupUsers(params: any = {}): Promise<any> {

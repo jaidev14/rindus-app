@@ -10,8 +10,7 @@ interface PropertyResolverItem {
 const propertyResolvers: PropertyResolverItem[] = [
   { property: 'id', path: 'id' },
   { property: 'postId', path: 'postId' },
-  { property: 'name', path: 'name' },
-  { property: 'email', path: 'email' },
+  { property: 'userId', path: 'userId' },
   { property: 'body', path: 'body' },
 ];
 
@@ -21,6 +20,7 @@ export class CommentModel {
   postId: number;
   name: string;
   email: string;
+  userId: number;
   body: string;
 
   constructor(data: any) {

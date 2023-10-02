@@ -61,6 +61,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-#Fake API
-db.json

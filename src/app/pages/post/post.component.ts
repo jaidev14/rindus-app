@@ -43,8 +43,13 @@ export class PostComponent implements OnInit {
     const postId = Number(this.route.snapshot.paramMap.get('id'));
     this.fetchPost(postId).then(
       () => this.fetchComments(postId).then(
-        () => this.loading = false)
-    )
+        () => {
+          this.comments.forEach(comment => {
+            comment.name = this.userService.getUserById(comment.userId).name;
+            comment.email = this.userService.getUserById(comment.userId).email;
+          });
+          this.loading = false;
+        }));
   }
 
   async fetchComments(postId: number) {
@@ -55,7 +60,7 @@ export class PostComponent implements OnInit {
   // But in a real world, we wouldn't have all the post data already in the list (as it would be less efficient), so we make a call to retrieve the specific post.
   async fetchPost(postId: number) {
     this.post = await this.postService.getPost(postId);
-    this.post.userName = this.userService.getUsernameById(this.post.userId);
+    this.post.userName = this.userService.getUserById(this.post.userId).name;
   }
 
   backToMain() {
@@ -66,8 +71,7 @@ export class PostComponent implements OnInit {
     if (this.newComment !== '') {
       const data = new CommentModel({
         postId: this.post.id,
-        name: this.userService.currentUser.name,
-        email: this.userService.currentUser.email,
+        userId: this.userService.currentUser.id,
         body: this.newComment
       });
       this.commentService.createComment(data).then(() => {
@@ -98,9 +102,8 @@ export class PostComponent implements OnInit {
       if (result) {
           const data = new CommentModel({
             id: comment.id,
+            userId: this.userService.currentUser.id,
             postId: this.post.id,
-            name: this.userService.currentUser.name,
-            email: this.userService.currentUser.email,
             body: result.body,
           });
           this.commentService.updateComment(data);

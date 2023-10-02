@@ -41,7 +41,7 @@ export class MainComponent implements OnInit {
     this.search = '';
     this.fetchPosts().then(() => {
       this.posts.forEach(post => {
-        post.userName = this.userService.getUsernameById(post.userId);
+        post.userName = this.userService.getUserById(post.userId).name;
       });
       this.loading = false
     });
