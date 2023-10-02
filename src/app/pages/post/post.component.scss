@@ -1,7 +1,7 @@
 @import 'src/styles';
 
 .blog-post {
-    color: white;
+    color: $white;
     background-color: $background-container;
     padding: 20px 20px;
     padding-bottom: 4rem;
@@ -11,7 +11,7 @@
     background-color: $background-container;
     padding: 20px 20px;
     margin-bottom: 10px;
-    color: white;
+    color: $white;
 }
 
 .blog-post-title {
@@ -22,7 +22,7 @@
 
 .blog-post-meta {
     margin-bottom: 1.25rem;
-    color: #999;
+    color: $pale-grey;
 }
 
 .column-back-button {
@@ -46,8 +46,8 @@
 }
 
 .card {
-    background-color: #313040;
-    color: white;
+    background-color: $background-container;
+    color: $white;
     border: none;
     border-radius: 0;
 }
@@ -72,14 +72,14 @@
 }
 
 .edit-action {
-    color: #999;
+    color: $pale-grey;
     position: absolute;
     right: 80px;
     cursor: pointer;
 }
 
 .delete-action {
-    color: rgb(221, 77, 77);
+    color: $red;
     position: absolute;
     right: 10px;
     cursor: pointer;

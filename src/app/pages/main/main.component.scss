@@ -6,7 +6,7 @@
 .input-box svg {
     right: 13px;
     top: 13px;
-    color: #ced4da;
+    color: $grey;
 }
 
 .current-user-box {
@@ -16,7 +16,6 @@
 .user-list-title {
     color: $white;
 }
-
 
 .clickable {
     cursor: pointer;
@@ -28,41 +27,39 @@
 }
 
 .search-input {
-    background: #282c37;
+    background: $background-container;
     border: 0;
     border-radius: 4px;
     box-shadow: none;
     box-sizing: border-box;
-    color: #9baec8 !important;
+    color: $white;
     display: block;
-    font-family: inherit;
     font-size: 14px;
     font-size: 16px;
     line-height: 18px;
-    margin: 0;
-    outline: 0;
     padding: 15px;
     padding-inline-end: 30px;
     width: 100%;
+    
 }
 
 .search-icon {
-    color: #9baec8;
+    color: $grey;
     inset-inline-end: 10px;
     position: absolute;
     top: 16px;
 }
 
 .edit-icon {
-    color: #9baec8;
-    inset-inline-end: 40px;
+    color: $grey;
+    inset-inline-end: 50px;
     position: absolute;
     top: 10px;
     cursor: pointer;
 }
 
 .delete-icon {
-    color: #9baec8;
+    color: $grey;
     inset-inline-end: 10px;
     position: absolute;
     top: 10px;
@@ -85,8 +82,21 @@
 }
 
 .card {
-    background-color: #4e4d5f;
-    color: white;
+    background-color: $background-container;
+    color: $white;
+    border: none;
+}
+
+.card-header {
+    border: none;
+}
+
+.card-title {
+    color: $primary;
+}
+
+.card-text {
+    color: $white;
 }
 
 .user-list {

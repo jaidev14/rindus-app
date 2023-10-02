@@ -1,13 +1,16 @@
-
 $background: #292b37;
 $background-container: #313040;
 $primary: #3aa484;
 $primary-active: #30836a;
 $secondary: #816fe8;
 $white: #ffffff;
+$grey: #9baec8;
+$pale-grey: #999;
+$red: #dd4d4d;
 
 
-.btn-primary, .btn-primary:active {
+.btn-primary,
+.btn-primary:active {
     background-color: $primary;
     border-color: $primary;
 }
@@ -18,16 +21,27 @@ $white: #ffffff;
 }
 
 
-.btn-secondary, .btn-secondary:hover, .btn-secondary:active, .btn-secondary:visited {
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:visited {
     background-color: $secondary;
     outline-color: $secondary;
 }
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { 
-    margin: 0px; font-family: Roboto,
-    "Helvetica Neue", sans-serif;
+body {
+    margin: 0px;
+    font-family: Roboto,
+        "Helvetica Neue", sans-serif;
     background-color: $background;
+}
+
+html,
+body {
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
