@@ -3,7 +3,7 @@
 </div>
 <div class="container align-items-center pt-3" *ngIf="!loading">
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-8 scrollable">
             <div class="header column-back-button" (click)="backToMain()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left column-back-icon" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
@@ -12,7 +12,7 @@
             </div>
             <div class="blog-post">
                 <h2 class="blog-post-title">{{post.title}}</h2>
-                <p class="blog-post-meta">by {{post.userName}}</p>
+                <p class="blog-post-meta">by {{post.username}}</p>
                 <h3 class="pb-3 mb-4 border-bottom"></h3>
                 <p>{{post.body}}</p>
             </div>

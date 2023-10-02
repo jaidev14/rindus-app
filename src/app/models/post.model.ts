@@ -18,7 +18,7 @@ export class PostModel {
 
   id: number;
   userId: number;
-  userName: string;
+  username: string;
   title: string;
   body: string;
 

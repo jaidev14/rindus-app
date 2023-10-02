@@ -60,7 +60,7 @@ export class PostComponent implements OnInit {
   // But in a real world, we wouldn't have all the post data already in the list (as it would be less efficient), so we make a call to retrieve the specific post.
   async fetchPost(postId: number) {
     this.post = await this.postService.getPost(postId);
-    this.post.userName = this.userService.getUserById(this.post.userId).name;
+    this.post.username = this.userService.getUserById(this.post.userId).name;
   }
 
   backToMain() {

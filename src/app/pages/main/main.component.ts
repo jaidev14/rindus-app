@@ -17,11 +17,16 @@ export class MainComponent implements OnInit {
   loading = false;
 
   search = '';
-  sortKey = '';
-  sortDirection = '';
+  sortKeys = [
+    { id: 0, displayValue: 'Nothing' },
+    { id: 1, displayValue: 'User' },
+    { id: 2, displayValue: 'Title' },
+    { id: 3, displayValue: 'Content' }
+  ];
+  sortKeySelected = 0;
 
   posts: PostModel[] = [];
-  filteredPosts: PostModel[] = []
+  filteredPosts: PostModel[] = [];
 
   modalRef: NgbModalRef;
 
@@ -41,7 +46,7 @@ export class MainComponent implements OnInit {
     this.search = '';
     this.fetchPosts().then(() => {
       this.posts.forEach(post => {
-        post.userName = this.userService.getUserById(post.userId).name;
+        post.username = this.userService.getUserById(post.userId).name;
       });
       this.loading = false
     });
@@ -49,20 +54,12 @@ export class MainComponent implements OnInit {
 
   async fetchPosts() {
     this.posts = await this.postService.getPosts();
-    this.filteredPosts = this.shuffleArray(this.posts);
+    this.filteredPosts = this.posts;
   }
 
-  shuffleArray(array: any) {
-    var m = array.length, t, i;
-
-    while (m) {
-      i = Math.floor(Math.random() * m--);
-      t = array[m];
-      array[m] = array[i];
-      array[i] = t;
-    }
-
-    return array;
+  clearSearch() {
+    this.search = '';
+    this.filteredPosts = this.posts;
   }
 
   filterResults() {
@@ -73,7 +70,7 @@ export class MainComponent implements OnInit {
     this.filteredPosts = this.posts.filter(
       post => post?.title.toLowerCase().includes(this.search.toLowerCase())
         || post?.body.toLowerCase().includes(this.search.toLowerCase())
-        || post?.userName.toLowerCase().includes(this.search.toLowerCase())
+        || post?.username.toLowerCase().includes(this.search.toLowerCase())
     );
   }
 
@@ -125,5 +122,49 @@ export class MainComponent implements OnInit {
     }).catch((res) => {
       console.log('modal dismissed');
     });
+  }
+
+  selectUser(userId: string) {
+    console.log(userId)
+    this.userService.selectUser(Number(userId));
+  }
+
+  selectOrderKey(sortKey: string) {
+    this.sortKeySelected = Number(sortKey);
+    this.orderPosts();
+  }
+
+  orderPosts() {
+    let orderedArray: PostModel[] = [];
+    switch (this.sortKeySelected) {
+      case 0:
+        orderedArray = this.shuffleArray(this.filteredPosts); // I thought it would be funny for this use case to shuffle the posts if this option was selected
+        break;
+      case 1:
+        orderedArray = this.filteredPosts.sort((a,b) => a.username.toLowerCase().localeCompare( b.username.toLowerCase()));
+        break;
+      case 2:
+        orderedArray = this.filteredPosts.sort((a,b) => a.title.toLowerCase().localeCompare( b.title.toLowerCase()));
+        break;
+      case 3:
+        orderedArray = this.filteredPosts.sort((a,b) => a.body.toLowerCase().localeCompare( b.body.toLowerCase()));
+        break;
+      default:
+        break;
+    }
+    return orderedArray;
+  }
+
+  shuffleArray(array: any) {
+    var m = array.length, t, i;
+
+    while (m) {
+      i = Math.floor(Math.random() * m--);
+      t = array[m];
+      array[m] = array[i];
+      array[i] = t;
+    }
+
+    return array;
   }
 }
